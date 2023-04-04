@@ -26,6 +26,8 @@ trait ResponsableTrait
 
     public function respondWithPagination(mixed $data, LengthAwarePaginator $paginator, string $message = 'success'): JsonResponse
     {
+        $this->setStatusCode(Response::HTTP_OK);
+        $this->setStatus(true);
         $code = $this->getStatusCode();
 
         return response()->json([
@@ -75,6 +77,14 @@ trait ResponsableTrait
         return $this->respond([
             'message' => $message,
         ], 'Request failed');
+    }
+
+    public function respondWithSuccess(mixed $data, string $message = 'success'): JsonResponse
+    {
+        $this->setStatusCode(Response::HTTP_OK);
+        $this->setStatus(true);
+
+        return $this->respond($data, $message);
     }
 
     public function respond(mixed $data, string $message = 'success'): JsonResponse
