@@ -5,7 +5,7 @@ cp .env.example .env
 echo "=== copy is done!  ==="
 
 echo "=== Execute docker-compose build... ==="
-docker-compose build
+docker-compose up -d
 echo "=== docker-compose build is done!! ==="
 
 echo "=== Installing composer... ==="
