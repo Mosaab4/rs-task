@@ -22,5 +22,6 @@ echo "==== Generating the app key ==="
 echo "==== App key generating is done!! ==="
 
 echo "==== Migrating and seed database ==="
+./vendor/bin/sail up -d
 ./vendor/bin/sail php artisan migrate:fresh --seed
 echo "==== Migrating and seed database is done!! ==="
