@@ -1,9 +1,8 @@
-version: '3'
+version: '2'
 services:
     #PHP Service
     app:
         build:
-        #            context: app
             dockerfile: docker/Dockerfile
         image: digitalocean.com/php
         container_name: rs_task_app
@@ -17,7 +16,7 @@ services:
             - ./:/var/www
             - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
         networks:
-            - app-network
+            - rs-app-network
 
     #Nginx Service
     webserver:
@@ -32,7 +31,7 @@ services:
             - ./:/var/www
             - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
         networks:
-            - app-network
+            - rs-app-network
 
     #MySQL Service
     db:
@@ -51,11 +50,11 @@ services:
             - data:/var/lib/mysql/
             - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
         networks:
-            - app-network
+            - rs-app-network
 
 #Docker Networks
 networks:
-    app-network:
+    rs-app-network:
         driver: bridge
 
 #Volumes
