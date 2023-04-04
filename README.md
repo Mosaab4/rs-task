@@ -2,7 +2,7 @@
 
 ## Getting Started
 #### Note: please make sure you have docker runngin
-1. ``` git clone https://github.com/Mosaab4/rs-task```
+1. ```git clone https://github.com/Mosaab4/rs-task```
 2. ``cd ts-task``
 3. ```sh ./setup.sh```
 
@@ -10,7 +10,7 @@
 ### Run migrations and seed data
 You can use the following command to refresh the database and seed testing data
 
-```./vendor/bin/sail php artisan migrate:fresh --seed```
+```docker-compose run app php artisan migrate:fresh --seed```
 
 ## Login Credentials
 You can use the following credentials to create a token so you can use the APIs:
@@ -32,7 +32,7 @@ you can choose stations to select start, end point and IDs for the seats to book
 ## Tests
 To Run all unit tests by running:
 
-``` ./vendor/bin/sail php artisan test```
+```docker-compose run app ./vendor/bin/phpunit```
 
 ### Postman Collection
 This postman collection contains all the required APIs
