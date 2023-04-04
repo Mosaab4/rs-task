@@ -1,5 +1,10 @@
 set -e
 
+export APP_SERVICE=${APP_SERVICE:-"laravel.test"}
+export DB_PORT=${DB_PORT:-3306}
+export WWWUSER=${WWWUSER:-$UID}
+export WWWGROUP=${WWWGROUP:-$(id -g)}
+
 echo "=== Copy .env  ==="
 cp .env.example .env
 echo "=== copy is done!  ==="
@@ -19,7 +24,3 @@ echo "==== App key generating is done!! ==="
 echo "==== Migrating and seed database ==="
 ./vendor/bin/sail php artisan migrate:fresh --seed
 echo "==== Migrating and seed database is done!! ==="
-
-echo "==== Running service ==="
-./vendor/bin/sail up -d
-echo "==== Running service is done!! ==="
